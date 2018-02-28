@@ -1,4 +1,4 @@
-myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
+myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, apiService) {
         $scope.template = TemplateService.getHTML("content/home.html");
         TemplateService.title = "Home"; //This is the Title of the Website
         $scope.navigation = NavigationService.getNavigation();
@@ -30,10 +30,16 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
         }
         $scope.closeModal = function () { // to close modals for ALL OTP
             $scope.userDetailModal.close();
+            $scope.template = TemplateService.getHTML("content/account.html");
         };
 
-        $scope.submitForm=function(){
-            $state.go("account");
+        $scope.submitForm = function (data) {
+            apiService.getAccounts(data, function (res) {
+                console.log("data", res);
+                $scope.userDetailModal.close();
+                $scope.myAccountList = res.data.data;
+                $scope.template = TemplateService.getHTML("content/account.html");
+            });
         }
 
     })
@@ -62,6 +68,19 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
         $scope.template = TemplateService.getHTML("content/account.html");
         TemplateService.title = "Account Details"; // This is the Title of the Website
         $scope.navigation = NavigationService.getNavigation();
+
+        $scope.userDetails = function () {
+            $scope.userDetailModal = $uibModal.open({
+                animation: true,
+                templateUrl: "views/modal/user.html",
+                scope: $scope,
+                size: 'lg',
+                backdropClass: 'black-drop'
+            });
+        }
+        $scope.closeModal = function () { // to close modals for ALL OTP
+            $scope.userDetailModal.close();
+        };
     })
     .controller('GridCtrl', function ($scope, TemplateService, NavigationService, $timeout, toastr, $http) {
         $scope.template = TemplateService.getHTML("content/grid.html");

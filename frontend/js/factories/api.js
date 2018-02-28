@@ -11,6 +11,13 @@ myApp.factory('apiService', function ($http, $q, $timeout) {
         },
         // This is a demo Service for POST Method.
 
+        getAccounts: function (formData, callback) {
+            $http({
+                url: adminurl + 'OBdemo/getMyAccounts',
+                method: 'POST',
+                data: formData
+            }).then(callback);
+        }
 
     };
 });
