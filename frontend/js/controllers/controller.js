@@ -1,4 +1,4 @@
-myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationService, $timeout) {
+myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
         $scope.template = TemplateService.getHTML("content/home.html");
         TemplateService.title = "Home"; //This is the Title of the Website
         $scope.navigation = NavigationService.getNavigation();
@@ -19,7 +19,22 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
             console.log("This is a button Click");
         };
 
+        $scope.userDetails = function () {
+            $scope.userDetailModal = $uibModal.open({
+                animation: true,
+                templateUrl: "views/modal/user.html",
+                scope: $scope,
+                size: 'lg',
+                backdropClass: 'black-drop'
+            });
+        }
+        $scope.closeModal = function () { // to close modals for ALL OTP
+            $scope.userDetailModal.close();
+        };
 
+        $scope.submitForm=function(){
+            $state.go("account");
+        }
 
     })
 
@@ -42,6 +57,11 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
                 }, 5000);
             });
         };
+    })
+    .controller('AccountCtrl', function ($scope, TemplateService, NavigationService, $timeout, toastr, $http) {
+        $scope.template = TemplateService.getHTML("content/account.html");
+        TemplateService.title = "Account Details"; // This is the Title of the Website
+        $scope.navigation = NavigationService.getNavigation();
     })
     .controller('GridCtrl', function ($scope, TemplateService, NavigationService, $timeout, toastr, $http) {
         $scope.template = TemplateService.getHTML("content/grid.html");

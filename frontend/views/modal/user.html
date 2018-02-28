@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <div class="pull-right circle" ng-click="closeModal();"><i class="fa fa-times" aria-hidden="true"></i></div>
+</div>
+<div class="modal-body" id="modal-body">
+    <form name="formData">
+        <div class="form-group">
+            <label for="name">User ID</label>
+            <input type="text" ng-model="data.name" class="form-control" id="name" placeholder="Name" required name="name">
+            <div class="pull-right" ng-repeat="(field,value) in formData.name.$error" ng-show="formData.name.$touched">
+                <span class="label label-danger" ng-if="field=='required' && value">Please Enter Name</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="passowrd">Password</label>
+            <input type="password" ng-model="data.password" class="form-control" id="passowrd" placeholder="passowrd" name="passowrd" required>
+            <div class="pull-right" ng-repeat="(field,value) in formData.passowrd.$error" ng-show="formData.passowrd.$touched">
+                <span class="label label-danger" ng-if="field=='required' && value">Please Enter passowrd</span>
+                <span class="label label-danger" ng-if="field=='passowrd' && value">Please Enter Valid passowrd</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name">Consumer Key</label>
+            <input type="text" ng-model="data.key" class="form-control" id="key" placeholder="key" required name="key">
+            <div class="pull-right" ng-repeat="(field,value) in formData.key.$error" ng-show="formData.key.$touched">
+                <span class="label label-danger" ng-if="field=='required' && value">Please Enter Consumer Key</span>
+            </div>
+        </div>
+        <button ng-click="submitForm()" class="btn btn-default" ng-disabled="formData.$invalid" promise-btn>Submit</button>
+    </form>
+</div>
+</div>

@@ -33,7 +33,9 @@ img.doneLoading {
 nav li:hover .dropdown-menu {
     display: block;
 }
-
+.dropdown-menu{
+    padding: 0;
+}
 #map img {
     opacity: 1;
 }
@@ -119,3 +121,6 @@ header {
 .nav-up {
     transform: translateY(-100%);
 }
+// #modal-body{
+//     margin: 20px;
+// }

@@ -25,6 +25,11 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locat
             templateUrl: tempateURL,
             controller: 'HomeCtrl'
         })
+        .state('account', {
+            url: "/account",
+            templateUrl: tempateURL,
+            controller: 'AccountCtrl'
+        })
         .state('form', {
             url: "/form",
             templateUrl: tempateURL,
