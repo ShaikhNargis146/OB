@@ -1,6 +1,6 @@
 apps:
   - script: "app.js"
-    name: "Cards for Fun - 80"
+    name: "Open-Banking - 82"
     watch: false
     args: "--prod"
     exec_mode: "cluster"
