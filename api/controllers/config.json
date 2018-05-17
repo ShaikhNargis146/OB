@@ -1,5 +1,6 @@
 {
     "apiHost": "https://apisandbox.openbankproject.com",
-    "consumerKey": "3sjjdzmdgvutecrqzfusxqgwns2aym41cygi5d5m",
-    "consumerSecret": "vot51uaassunhqhumuil2nhkezutziqzkqfzry5h"
+    "consumerKey": "qbns43nfohztq0nt0viijy50hcuwzgjo5vii2la2",
+    "consumerSecret": "s10pygjbr2qqewvtzenokkxc5ijqfslp0aixx4tp",
+    "redirectUrl": "http://127.0.0.1:8080/api/OBdemo/callbackFun"
 }

@@ -13,7 +13,7 @@ myApp.factory('apiService', function ($http, $q, $timeout) {
 
         getAccounts: function (formData, callback) {
             $http({
-                url: adminurl + 'OBdemo/getMyAccounts',
+                url: adminurl + 'OBdemo/getMyAccountsOauth',
                 method: 'POST',
                 data: formData
             }).then(callback);

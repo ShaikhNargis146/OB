@@ -64,11 +64,16 @@ myApp.controller('HomeCtrl', function ($scope, TemplateService, NavigationServic
             });
         };
     })
-    .controller('AccountCtrl', function ($scope, TemplateService, NavigationService, $timeout, toastr, $http) {
-        $scope.template = TemplateService.getHTML("content/account.html");
+    .controller('AccountCtrl', function ($scope, TemplateService, NavigationService, $timeout, toastr, $http, apiService) {
+        // $scope.template = TemplateService.getHTML("content/account.html");
         TemplateService.title = "Account Details"; // This is the Title of the Website
         $scope.navigation = NavigationService.getNavigation();
-
+        var data = {};
+        apiService.getAccounts(data, function (res) {
+            console.log("data", res);
+            $scope.myAccountList = res.data.data;
+            $scope.template = TemplateService.getHTML("content/account.html");
+        });
         $scope.userDetails = function () {
             $scope.userDetailModal = $uibModal.open({
                 animation: true,
